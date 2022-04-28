@@ -1,4 +1,4 @@
-import { ListingStatus, Network, OrderSortBy } from '@dcl/schemas'
+import { ListingStatus, Network, OrderSortBy } from '@yanrongxing/schemas'
 import { IHttpServerComponent } from '@well-known-components/interfaces'
 import { AppComponents, Context } from '../../types'
 import { Params } from '../../logic/http/params'

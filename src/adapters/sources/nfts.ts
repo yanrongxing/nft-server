@@ -1,4 +1,4 @@
-import { NFTFilters, NFTSortBy } from '@dcl/schemas'
+import { NFTFilters, NFTSortBy } from '@yanrongxing/schemas'
 import { FetchOptions, IMergerComponent } from '../../ports/merger/types'
 import { INFTsComponent, NFTResult } from '../../ports/nfts/types'
 

@@ -1,4 +1,4 @@
-import { Sale, SaleFilters, SaleType } from '@dcl/schemas'
+import { Sale, SaleFilters, SaleType } from '@yanrongxing/schemas'
 
 export interface ISalesComponent {
   fetch(filters: SaleFilters): Promise<Sale[]>

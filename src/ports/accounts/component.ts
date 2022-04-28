@@ -1,4 +1,4 @@
-import { AccountFilters, AccountSortBy, ChainId, Network } from '@dcl/schemas'
+import { AccountFilters, AccountSortBy, ChainId, Network } from '@yanrongxing/schemas'
 import { ISubgraphComponent } from '../subgraph/types'
 import { AccountFragment, IAccountsComponent } from './types'
 import { fromAccountFragment, getAccountsQuery } from './utils'

@@ -1,4 +1,4 @@
-import { ChainId, Mint, MintFilters, MintSortBy, Network } from '@dcl/schemas'
+import { ChainId, Mint, MintFilters, MintSortBy, Network } from '@yanrongxing/schemas'
 import { MintFragment } from './types'
 
 export const MINT_DEFAULT_SORT_BY = MintSortBy.RECENTLY_MINTED

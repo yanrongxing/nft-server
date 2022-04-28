@@ -1,4 +1,4 @@
-import { Account, AccountFilters, AccountSortBy } from '@dcl/schemas'
+import { Account, AccountFilters, AccountSortBy } from '@yanrongxing/schemas'
 import { IAccountsComponent } from '../../ports/accounts/types'
 import { FetchOptions, IMergerComponent } from '../../ports/merger/types'
 

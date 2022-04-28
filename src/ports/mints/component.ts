@@ -1,4 +1,4 @@
-import { ChainId, MintFilters, Network } from '@dcl/schemas'
+import { ChainId, MintFilters, Network } from '@yanrongxing/schemas'
 import { ISubgraphComponent } from '../subgraph/types'
 import { MintFragment, IMintsComponent } from './types'
 import { fromMintFragment, getMintsQuery } from './utils'

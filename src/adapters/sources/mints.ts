@@ -1,4 +1,4 @@
-import { Mint, MintFilters, MintSortBy } from '@dcl/schemas'
+import { Mint, MintFilters, MintSortBy } from '@yanrongxing/schemas'
 import { FetchOptions, IMergerComponent } from '../../ports/merger/types'
 import { IMintsComponent } from '../../ports/mints/types'
 

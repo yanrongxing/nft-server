@@ -5,7 +5,7 @@ import {
   Sale,
   SaleFilters,
   SaleSortBy,
-} from '@dcl/schemas'
+} from '@yanrongxing/schemas'
 import { getMarketplaceChainId } from '../../logic/chainIds'
 import { getMarketplaceContracts } from '../../logic/contracts'
 import { SaleFragment } from './types'

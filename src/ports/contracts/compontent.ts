@@ -1,4 +1,4 @@
-import { Contract, ContractFilters, Network } from '@dcl/schemas'
+import { Contract, ContractFilters, Network } from '@yanrongxing/schemas'
 import { IContractsComponent } from './types'
 
 export function createContractsComponent(options: {

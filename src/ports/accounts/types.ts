@@ -1,4 +1,4 @@
-import { Account, AccountFilters } from '@dcl/schemas'
+import { Account, AccountFilters } from '@yanrongxing/schemas'
 
 export interface IAccountsComponent {
   fetch(filters: AccountFilters): Promise<Account[]>

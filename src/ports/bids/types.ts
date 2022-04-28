@@ -1,4 +1,4 @@
-import { Bid, BidFilters, ListingStatus } from '@dcl/schemas'
+import { Bid, BidFilters, ListingStatus } from '@yanrongxing/schemas'
 
 export interface IBidsComponent {
   fetch(filters: BidFilters): Promise<Bid[]>

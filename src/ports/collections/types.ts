@@ -1,4 +1,4 @@
-import { Collection, CollectionFilters } from '@dcl/schemas'
+import { Collection, CollectionFilters } from '@yanrongxing/schemas'
 
 export interface ICollectionsComponent {
   fetch(filters: CollectionFilters): Promise<Collection[]>

@@ -5,7 +5,7 @@ import {
   ChainId,
   ListingStatus,
   Network,
-} from '@dcl/schemas'
+} from '@yanrongxing/schemas'
 import { BidFragment } from './types'
 
 export const BID_DEFAULT_SORT_BY = BidSortBy.RECENTLY_OFFERED

@@ -1,4 +1,4 @@
-import { Bid, BidFilters, BidSortBy } from '@dcl/schemas'
+import { Bid, BidFilters, BidSortBy } from '@yanrongxing/schemas'
 import { FetchOptions, IMergerComponent } from '../../ports/merger/types'
 import { IBidsComponent } from '../../ports/bids/types'
 

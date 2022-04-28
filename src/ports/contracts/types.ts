@@ -1,4 +1,4 @@
-import { Contract, ContractFilters } from '@dcl/schemas'
+import { Contract, ContractFilters } from '@yanrongxing/schemas'
 
 export interface IContractsComponent {
   fetch(filters: ContractFilters): Promise<Contract[]>

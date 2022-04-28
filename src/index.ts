@@ -18,7 +18,6 @@ import {
   Mint,
   MintFilters,
   MintSortBy,
-  Network,
   NFTFilters,
   NFTSortBy,
   Order,
@@ -27,7 +26,7 @@ import {
   Sale,
   SaleFilters,
   SaleSortBy,
-} from '@dcl/schemas'
+} from '@yanrongxing/schemas'
 import { createConfigComponent } from '@well-known-components/env-config-provider'
 import {
   createServerComponent,
@@ -43,7 +42,7 @@ import { createBidsComponent } from './ports/bids/component'
 import { createOrdersComponent } from './ports/orders/component'
 import { createMergerComponent } from './ports/merger/component'
 import { SortDirection } from './ports/merger/types'
-import { getMarketplaceChainId, getCollectionsChainId } from './logic/chainIds'
+import { getMarketplaceChainId, getCollectionsChainId, getMarketplaceChainName } from './logic/chainIds'
 import { createOrdersSource } from './adapters/sources/orders'
 import { createContractsComponent } from './ports/contracts/compontent'
 import { createBidsSource } from './adapters/sources/bids'
@@ -57,14 +56,14 @@ import {
   getMarketplaceOrderBy,
   marketplaceShouldFetch,
 } from './logic/nfts/marketplace'
-import {
-  collectionsShouldFetch,
-  fromCollectionsFragment,
-  getCollectionsExtraVariables,
-  getCollectionsExtraWhere,
-  getCollectionsFragment,
-  getCollectionsOrderBy,
-} from './logic/nfts/collections'
+// import {
+//   collectionsShouldFetch,
+//   fromCollectionsFragment,
+//   getCollectionsExtraVariables,
+//   getCollectionsExtraWhere,
+//   getCollectionsFragment,
+//   getCollectionsOrderBy,
+// } from './logic/nfts/collections'
 import { NFTResult } from './ports/nfts/types'
 import { NFT_DEFAULT_SORT_BY } from './ports/nfts/utils'
 import { createNFTsSource } from './adapters/sources/nfts'
@@ -108,9 +107,9 @@ async function initComponents(): Promise<AppComponents> {
     HTTP_SERVER_HOST: process.env.HTTP_SERVER_HOST || '0.0.0.0',
     API_VERSION: process.env.API_VERSION || 'v1',
   }
-
+  console.log(process.env)
   const config = createConfigComponent(process.env, defaultValues)
-
+  
   const cors = {
     origin: await config.getString('CORS_ORIGIN'),
     method: await config.getString('CORS_METHOD'),
@@ -136,6 +135,7 @@ async function initComponents(): Promise<AppComponents> {
   )
 
   // chain ids
+  const marketplaceChainName = getMarketplaceChainName()
   const marketplaceChainId = getMarketplaceChainId()
   const collectionsChainId = getCollectionsChainId()
 
@@ -157,13 +157,13 @@ async function initComponents(): Promise<AppComponents> {
   // orders
   const marketplaceOrders = createOrdersComponent({
     subgraph: marketplaceSubgraph,
-    network: Network.ETHEREUM,
+    network: marketplaceChainName,
     chainId: marketplaceChainId,
   })
 
   const collectionsOrders = createOrdersComponent({
     subgraph: collectionsSubgraph,
-    network: Network.MATIC,
+    network: marketplaceChainName,
     chainId: collectionsChainId,
   })
 
@@ -184,13 +184,13 @@ async function initComponents(): Promise<AppComponents> {
   // bids
   const marketplaceBids = createBidsComponent({
     subgraph: marketplaceSubgraph,
-    network: Network.ETHEREUM,
+    network: marketplaceChainName,
     chainId: marketplaceChainId,
   })
 
   const collectionsBids = createBidsComponent({
     subgraph: collectionsSubgraph,
-    network: Network.MATIC,
+    network: marketplaceChainName,
     chainId: collectionsChainId,
   })
 
@@ -211,17 +211,17 @@ async function initComponents(): Promise<AppComponents> {
   // contracts
   const marketplaceContracts = createContractsComponent({
     getContracts: async () => getMarketplaceContracts(marketplaceChainId),
-    network: Network.ETHEREUM,
+    network: marketplaceChainName,
   })
 
   const collectionsContracts = createContractsComponent({
     getContracts: () =>
       getCollectionsContracts(
         collectionsSubgraph,
-        Network.MATIC,
+        marketplaceChainName,
         collectionsChainId
       ),
-    network: Network.MATIC,
+    network: marketplaceChainName,
   })
 
   const contracts = createMergerComponent<
@@ -251,21 +251,21 @@ async function initComponents(): Promise<AppComponents> {
     getExtraWhere: getMarketplaceExtraWhere,
   })
 
-  const collectionsNFTs = createNFTComponent({
-    subgraph: collectionsSubgraph,
-    shouldFetch: collectionsShouldFetch,
-    fragmentName: 'collectionsFragment',
-    getFragment: getCollectionsFragment,
-    fromFragment: fromCollectionsFragment,
-    getSortByProp: getCollectionsOrderBy,
-    getExtraWhere: getCollectionsExtraWhere,
-    getExtraVariables: getCollectionsExtraVariables,
-  })
+  // const collectionsNFTs = createNFTComponent({
+  //   subgraph: collectionsSubgraph,
+  //   shouldFetch: collectionsShouldFetch,
+  //   fragmentName: 'collectionsFragment',
+  //   getFragment: getCollectionsFragment,
+  //   fromFragment: fromCollectionsFragment,
+  //   getSortByProp: getCollectionsOrderBy,
+  //   getExtraWhere: getCollectionsExtraWhere,
+  //   getExtraVariables: getCollectionsExtraVariables,
+  // })
 
   const nfts = createMergerComponent<NFTResult, NFTFilters, NFTSortBy>({
     sources: [
       createNFTsSource(marketplaceNFTs),
-      createNFTsSource(collectionsNFTs),
+      // createNFTsSource(collectionsNFTs),
     ],
     defaultSortBy: NFT_DEFAULT_SORT_BY,
     directions: {
@@ -281,7 +281,7 @@ async function initComponents(): Promise<AppComponents> {
   // items
   const collectionsItems = createItemsComponent({
     subgraph: collectionsSubgraph,
-    network: Network.MATIC,
+    network: marketplaceChainName,
     chainId: collectionsChainId,
   })
 
@@ -301,7 +301,7 @@ async function initComponents(): Promise<AppComponents> {
   // mints
   const collectionsMints = createMintsComponent({
     subgraph: collectionsSubgraph,
-    network: Network.MATIC,
+    network: marketplaceChainName,
     chainId: collectionsChainId,
   })
 
@@ -318,13 +318,13 @@ async function initComponents(): Promise<AppComponents> {
   // sales
   const marketplaceSales = createSalesComponent({
     subgraph: marketplaceSubgraph,
-    network: Network.ETHEREUM,
+    network: marketplaceChainName,
     chainId: marketplaceChainId,
   })
 
   const collectionsSales = createSalesComponent({
     subgraph: collectionsSubgraph,
-    network: Network.MATIC,
+    network: marketplaceChainName,
     chainId: collectionsChainId,
   })
 
@@ -344,13 +344,13 @@ async function initComponents(): Promise<AppComponents> {
   // accounts
   const marketplaceAccounts = createAccountsComponent({
     subgraph: marketplaceSubgraph,
-    network: Network.ETHEREUM,
+    network: marketplaceChainName,
     chainId: marketplaceChainId,
   })
 
   const collectionsAccounts = createAccountsComponent({
     subgraph: collectionsSubgraph,
-    network: Network.MATIC,
+    network: marketplaceChainName,
     chainId: collectionsChainId,
   })
 
@@ -376,7 +376,7 @@ async function initComponents(): Promise<AppComponents> {
   // collections
   const collectionsCollections = createCollectionsComponent({
     subgraph: collectionsSubgraph,
-    network: Network.MATIC,
+    network: marketplaceChainName,
     chainId: collectionsChainId,
   })
 

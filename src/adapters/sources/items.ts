@@ -1,4 +1,4 @@
-import { Item, ItemFilters, ItemSortBy } from '@dcl/schemas'
+import { Item, ItemFilters, ItemSortBy } from '@yanrongxing/schemas'
 import { FetchOptions, IMergerComponent } from '../../ports/merger/types'
 import { IItemsComponent } from '../../ports/items/types'
 

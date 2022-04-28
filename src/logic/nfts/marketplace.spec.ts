@@ -1,4 +1,4 @@
-import { NFTCategory } from '@dcl/schemas'
+import { NFTCategory } from '@yanrongxing/schemas'
 import {
   fromMarketplaceNFTFragment,
   MarketplaceNFTFragment,

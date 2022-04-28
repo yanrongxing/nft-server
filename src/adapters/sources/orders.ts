@@ -1,4 +1,4 @@
-import { Order, OrderFilters, OrderSortBy } from '@dcl/schemas'
+import { Order, OrderFilters, OrderSortBy } from '@yanrongxing/schemas'
 import { FetchOptions, IMergerComponent } from '../../ports/merger/types'
 import { IOrdersComponent } from '../../ports/orders/types'
 

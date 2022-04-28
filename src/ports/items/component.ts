@@ -1,4 +1,4 @@
-import { ChainId, ItemFilters, Network } from '@dcl/schemas'
+import { ChainId, ItemFilters, Network } from '@yanrongxing/schemas'
 import { ISubgraphComponent } from '../subgraph/types'
 import { IItemsComponent, ItemFragment } from './types'
 import { fromItemFragment, getItemsQuery } from './utils'

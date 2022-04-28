@@ -4,7 +4,7 @@ import {
   CollectionFilters,
   CollectionSortBy,
   Network,
-} from '@dcl/schemas'
+} from '@yanrongxing/schemas'
 import { CollectionFragment } from './types'
 
 export const COLLECTION_DEFAULT_SORT_BY = CollectionSortBy.NAME

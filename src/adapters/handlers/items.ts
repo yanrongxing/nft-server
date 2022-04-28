@@ -6,7 +6,7 @@ import {
   Rarity,
   WearableCategory,
   WearableGender,
-} from '@dcl/schemas'
+} from '@yanrongxing/schemas'
 import { IHttpServerComponent } from '@well-known-components/interfaces'
 import { AppComponents, Context } from '../../types'
 import { Params } from '../../logic/http/params'

@@ -6,12 +6,12 @@ import {
   NFTSortBy,
   Rarity,
   WearableCategory,
-} from '@dcl/schemas'
+} from '@yanrongxing/schemas'
 import { NFTResult } from '../../ports/nfts/types'
 import { getId, NFT_DEFAULT_SORT_BY } from '../../ports/nfts/utils'
 import { OrderFragment } from '../../ports/orders/types'
 import { fromOrderFragment, getOrderFields } from '../../ports/orders/utils'
-import { getMarketplaceChainId } from '../chainIds'
+import { getMarketplaceChainId, getMarketplaceChainName } from '../chainIds'
 import { isExpired } from '../expiration'
 import { capitalize } from '../string'
 
@@ -205,7 +205,7 @@ export function fromMarketplaceNFTFragment(
       issuedId: null,
       itemId: null,
       category: fragment.category,
-      network: Network.ETHEREUM,
+      network: getMarketplaceChainName(),
       chainId: getMarketplaceChainId(),
       createdAt: +fragment.createdAt * 1000,
       updatedAt: +fragment.updatedAt * 1000,
@@ -249,7 +249,7 @@ export function getMarketplaceExtraWhere(options: NFTFilters) {
 }
 
 export function fromMarketplaceOrderFragment(fragment: OrderFragment) {
-  return fromOrderFragment(fragment, Network.ETHEREUM, getMarketplaceChainId())
+  return fromOrderFragment(fragment, getMarketplaceChainName(), getMarketplaceChainId())
 }
 
 export function marketplaceShouldFetch(filters: NFTFilters) {

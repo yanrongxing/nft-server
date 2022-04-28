@@ -1,4 +1,4 @@
-import { Network, NFTCategory, SaleSortBy, SaleType } from '@dcl/schemas'
+import { Network, NFTCategory, SaleSortBy, SaleType } from '@yanrongxing/schemas'
 import { IHttpServerComponent } from '@well-known-components/interfaces'
 import { Params } from '../../logic/http/params'
 import { asJSON } from '../../logic/http/response'

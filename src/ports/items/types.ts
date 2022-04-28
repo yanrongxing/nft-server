@@ -5,7 +5,7 @@ import {
   ItemFilters,
   Rarity,
   WearableCategory,
-} from '@dcl/schemas'
+} from '@yanrongxing/schemas'
 
 export enum FragmentItemType {
   WEARABLE_V1 = 'wearable_v1',

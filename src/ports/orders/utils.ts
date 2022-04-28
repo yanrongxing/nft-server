@@ -5,7 +5,7 @@ import {
   Order,
   OrderFilters,
   OrderSortBy,
-} from '@dcl/schemas'
+} from '@yanrongxing/schemas'
 import { OrderFragment } from './types'
 
 export const ORDER_DEFAULT_SORT_BY = OrderSortBy.RECENTLY_LISTED

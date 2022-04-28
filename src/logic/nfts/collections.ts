@@ -8,7 +8,7 @@ import {
   NFTSortBy,
   Rarity,
   WearableCategory,
-} from '@dcl/schemas'
+} from '@yanrongxing/schemas'
 import { FragmentItemType } from '../../ports/items/types'
 import { NFTResult } from '../../ports/nfts/types'
 import { getId, NFT_DEFAULT_SORT_BY } from '../../ports/nfts/utils'

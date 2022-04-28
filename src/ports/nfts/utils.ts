@@ -3,7 +3,7 @@ import {
   NFTFilters,
   NFTSortBy,
   WearableGender,
-} from '@dcl/schemas'
+} from '@yanrongxing/schemas'
 import { QueryVariables } from './types'
 
 export const NFT_DEFAULT_SORT_BY = NFTSortBy.NEWEST

@@ -1,4 +1,4 @@
-import { Mint, MintFilters } from '@dcl/schemas'
+import { Mint, MintFilters } from '@yanrongxing/schemas'
 
 export interface IMintsComponent {
   fetch(filters: MintFilters): Promise<Mint[]>

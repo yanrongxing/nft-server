@@ -1,4 +1,4 @@
-import { ListingStatus, Order, OrderFilters } from '@dcl/schemas'
+import { ListingStatus, Order, OrderFilters } from '@yanrongxing/schemas'
 
 export interface IOrdersComponent {
   fetch(filters: OrderFilters): Promise<Order[]>

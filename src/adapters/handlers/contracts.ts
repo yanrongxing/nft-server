@@ -1,4 +1,4 @@
-import { ContractSortBy, Network, NFTCategory } from '@dcl/schemas'
+import { ContractSortBy, Network, NFTCategory } from '@yanrongxing/schemas'
 import { IHttpServerComponent } from '@well-known-components/interfaces'
 import { AppComponents, Context } from '../../types'
 import { Params } from '../../logic/http/params'

@@ -1,4 +1,4 @@
-import { ChainId, Contract, Network, NFTCategory } from '@dcl/schemas'
+import { ChainId, Contract, Network, NFTCategory } from '@yanrongxing/schemas'
 import { ISubgraphComponent } from '../ports/subgraph/types'
 
 const MAX_RESULTS = 1000

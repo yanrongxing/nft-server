@@ -1,4 +1,4 @@
-import { NFTFilters, NFTSortBy } from '@dcl/schemas'
+import { NFTFilters, NFTSortBy } from '@yanrongxing/schemas'
 import { ISubgraphComponent } from '../subgraph/types'
 import { INFTsComponent, NFTResult } from './types'
 import { getFetchOneQuery, getFetchQuery, getQueryVariables } from './utils'

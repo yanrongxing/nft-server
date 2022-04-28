@@ -4,7 +4,7 @@ import {
   NFTCategory,
   Rarity,
   WearableCategory,
-} from '@dcl/schemas'
+} from '@yanrongxing/schemas'
 import { FragmentItemType } from '../../ports/items/types'
 import { CollectionsFragment, fromCollectionsFragment } from './collections'
 

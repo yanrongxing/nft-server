@@ -1,4 +1,4 @@
-import { NFT, NFTFilters, Order } from '@dcl/schemas'
+import { NFT, NFTFilters, Order } from '@yanrongxing/schemas'
 
 export type NFTResult = {
   nft: NFT

@@ -6,7 +6,7 @@ import {
   Network,
   NFTCategory,
   WearableGender,
-} from '@dcl/schemas'
+} from '@yanrongxing/schemas'
 import { ItemFragment, FragmentItemType } from './types'
 import { isAddressZero } from '../../logic/address'
 

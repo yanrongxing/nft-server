@@ -6,7 +6,7 @@ import {
   Rarity,
   WearableCategory,
   WearableGender,
-} from '@dcl/schemas'
+} from '@yanrongxing/schemas'
 import { IHttpServerComponent } from '@well-known-components/interfaces'
 import { AppComponents, Context } from '../../types'
 import { Params } from '../../logic/http/params'
@@ -51,7 +51,7 @@ export function createNFTsHandler(
     const itemRarities = params.getList<Rarity>('itemRarity', Rarity)
     const itemId = params.getString('itemId')
     const network = params.getValue<Network>('network', Network)
-
+    
     return asJSON(() =>
       nfts.fetchAndCount({
         first,

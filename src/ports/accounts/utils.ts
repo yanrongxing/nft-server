@@ -1,4 +1,4 @@
-import { Account, AccountFilters, AccountSortBy } from '@dcl/schemas'
+import { Account, AccountFilters, AccountSortBy } from '@yanrongxing/schemas'
 import { AccountFragment } from './types'
 
 export const ACCOUNT_DEFAULT_SORT_BY = AccountSortBy.MOST_EARNED

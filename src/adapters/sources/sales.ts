@@ -1,4 +1,4 @@
-import { Sale, SaleFilters, SaleSortBy } from '@dcl/schemas'
+import { Sale, SaleFilters, SaleSortBy } from '@yanrongxing/schemas'
 import { FetchOptions, IMergerComponent } from '../../ports/merger/types'
 import { ISalesComponent } from '../../ports/sales/types'
 

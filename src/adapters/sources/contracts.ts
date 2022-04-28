@@ -1,4 +1,4 @@
-import { Contract, ContractFilters, ContractSortBy } from '@dcl/schemas'
+import { Contract, ContractFilters, ContractSortBy } from '@yanrongxing/schemas'
 import { FetchOptions, IMergerComponent } from '../../ports/merger/types'
 import { IContractsComponent } from '../../ports/contracts/types'
 

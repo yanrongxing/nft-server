@@ -1,4 +1,4 @@
-import { ChainId, Network, SaleFilters, SaleType } from '@dcl/schemas'
+import { ChainId, Network, SaleFilters, SaleType } from '@yanrongxing/schemas'
 import { ISubgraphComponent } from '../subgraph/types'
 import { SaleFragment, ISalesComponent } from './types'
 import { fromSaleFragment, getSalesQuery } from './utils'

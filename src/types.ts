@@ -25,7 +25,7 @@ import {
   Sale,
   SaleFilters,
   SaleSortBy,
-} from '@dcl/schemas'
+} from '@yanrongxing/schemas'
 import { RoutedContext } from '@well-known-components/http-server'
 import type {
   IConfigComponent,

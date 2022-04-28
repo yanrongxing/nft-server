@@ -1,4 +1,4 @@
-import { Collection, CollectionFilters, CollectionSortBy } from '@dcl/schemas'
+import { Collection, CollectionFilters, CollectionSortBy } from '@yanrongxing/schemas'
 import { FetchOptions, IMergerComponent } from '../../ports/merger/types'
 import { ICollectionsComponent } from '../../ports/collections/types'
 
