@@ -82,7 +82,7 @@ export function createNFTsHandler(
 export function createNFTHandler(
   components: Pick<AppComponents, 'logs' | 'nfts'>
 ): IHttpServerComponent.IRequestHandler<
-  Context<'/contracts/:contractAddress/tokens/:tokenId'>
+  Context<'/contracts/:contractAddress/tokens/:tokenId/:owner'>
 > {
   const { nfts } = components
   return async (context) => {

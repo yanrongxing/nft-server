@@ -66,10 +66,10 @@ export function getFetchQuery(
 ) {
   const where: string[] = []
 
-  if (filters.owner) {
+  if (filters.owner && filters.owner != ':owner') {
     where.push('owner: $owner')
   }
-
+  
   if (
     filters.isOnSale ||
     filters.sortBy === NFTSortBy.CHEAPEST ||
@@ -181,12 +181,14 @@ export function getFetchQuery(
 
 export function getFetchOneQuery(
   fragmentName: string,
-  getFragment: () => string
+  getFragment: () => string,
+  owner?: string
 ) {
-  return `
-  query NFTByTokenId($contractAddress: String, $tokenId: String) {
+  if(owner){
+    return `
+  query NFTByTokenId($contractAddress: String, $tokenId: String, $owner: String) {
     nfts(
-      where: { contractAddress: $contractAddress, tokenId: $tokenId }
+      where: { contractAddress: $contractAddress, tokenId: $tokenId , owner: $owner}
       first: 1
       ) {
         ...${fragmentName}
@@ -194,8 +196,26 @@ export function getFetchOneQuery(
     }
     ${getFragment()}
     `
+  }else{
+    return `
+  query NFTByTokenId($contractAddress: String, $tokenId: String) {
+    nfts(
+      where: { contractAddress: $contractAddress, tokenId: $tokenId}
+      first: 1
+      ) {
+        ...${fragmentName}
+      }
+    }
+    ${getFragment()}
+    `
+  }
+  
 }
 
-export function getId(contractAddress: string, tokenId: string) {
-  return `${contractAddress}-${tokenId}`
+export function getId(contractAddress: string, tokenId: string, owner: string, category: string) {
+  if(category == 'props'){
+    return `${contractAddress}-${tokenId}-${owner}`
+  }else{
+    return `${contractAddress}-${tokenId}`
+  }
 }

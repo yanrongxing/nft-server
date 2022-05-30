@@ -11,6 +11,7 @@ export type SaleFragment = {
   buyer: string
   seller: string
   price: string
+  quantity: string
   timestamp: string
   txHash: string
   searchItemId: string

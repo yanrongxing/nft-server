@@ -178,7 +178,7 @@ export function fromCollectionsFragment(
 
   const result: NFTResult = {
     nft: {
-      id: getId(fragment.contractAddress, fragment.tokenId),
+      id: getId(fragment.contractAddress, fragment.tokenId,fragment.owner.address,''),
       tokenId: fragment.tokenId,
       contractAddress: fragment.contractAddress,
       category,
@@ -199,6 +199,7 @@ export function fromCollectionsFragment(
       updatedAt: +fragment.updatedAt * 1000,
       //@ts-ignore
       soldAt: +fragment.soldAt * 1000,
+      balance:'0'
     },
     order:
       fragment.activeOrder && !isExpired(fragment.activeOrder.expiresAt)

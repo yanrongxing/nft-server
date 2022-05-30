@@ -22,6 +22,7 @@ export const getOrderFields = () => `
     expiresAt
     createdAt
     updatedAt
+    quantity
     nft {
       tokenId
     }
@@ -136,6 +137,7 @@ export function fromOrderFragment(
     status: fragment.status,
     network,
     chainId,
+    quantity:+fragment.quantity,
     expiresAt: +fragment.expiresAt,
     createdAt: +fragment.createdAt * 1000,
     updatedAt: +fragment.updatedAt * 1000,

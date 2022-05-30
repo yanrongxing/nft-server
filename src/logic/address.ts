@@ -5,3 +5,7 @@ export function isAddress(value?: string | null) {
 export const isAddressZero = (addr: string) => {
   return /^0x(0)+$/.test(addr)
 }
+
+// export const isERC1155 = (addr: string) => {
+//   return '0x68b1d87f95878fe05b998f19b66f4baba5de1aed' === addr
+// }

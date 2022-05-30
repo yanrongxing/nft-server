@@ -34,7 +34,7 @@ export async function setupRoutes(globalContext: GlobalContext) {
   router.get('/collections', createCollectionsHandler(components))
   router.get('/accounts', createAccountsHandler(components))
   router.get(
-    '/contracts/:contractAddress/tokens/:tokenId',
+    '/contracts/:contractAddress/tokens/:tokenId/:owner',
     createNFTHandler(components)
   )
 

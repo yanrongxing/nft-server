@@ -38,6 +38,7 @@ export function createNFTComponent<T extends { id: string }>(options: {
       const { nfts: fragments } = await subgraph.query<{
         nfts: T[]
       }>(query, variables)
+      
       return fragments
     }
   }
@@ -47,13 +48,15 @@ export function createNFTComponent<T extends { id: string }>(options: {
       return []
     }
 
-    if (options.tokenId && options.contractAddresses) {
+
+    if ((options.contractAddresses![0] !== '0x610178da211fef7d417bc0e6fed39f05609ad788' ) && options.tokenId && options.contractAddresses ) {
       const nft = await fetchOne(options.contractAddresses[0], options.tokenId)
       return nft ? [nft] : []
-    } else if (options.tokenId) {
-      throw new Error(
-        'You need to provide a "contractAddress" as well when filtering by "tokenId"'
-      )
+    }
+
+    if ((options.contractAddresses![0] === '0x610178da211fef7d417bc0e6fed39f05609ad788' ) && options.tokenId && options.contractAddresses && options.owner ) {
+      const nft = await fetchOne(options.contractAddresses[0], options.tokenId,options.owner)
+      return nft ? [nft] : []
     }
 
     const fetchFragments = getFragmentFetcher(options)
@@ -71,11 +74,12 @@ export function createNFTComponent<T extends { id: string }>(options: {
     return fragments.length
   }
 
-  async function fetchOne(contractAddress: string, tokenId: string) {
-    const query = getFetchOneQuery(fragmentName, getFragment)
+  async function fetchOne(contractAddress: string, tokenId: string, owner?: string) {
+    const query = getFetchOneQuery(fragmentName, getFragment,owner)
     const variables = {
       contractAddress,
       tokenId,
+      owner
     }
     const { nfts: fragments } = await subgraph.query<{
       nfts: T[]

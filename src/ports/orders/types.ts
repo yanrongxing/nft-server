@@ -12,6 +12,7 @@ export type OrderFragment = {
   owner: string
   buyer: string | null
   price: string
+  quantity: string
   status: ListingStatus
   expiresAt: string
   createdAt: string

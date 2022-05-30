@@ -6,6 +6,7 @@ import {
   NFTSortBy,
   Rarity,
   WearableCategory,
+  PropsCategory
 } from '@yanrongxing/schemas'
 import { NFTResult } from '../../ports/nfts/types'
 import { getId, NFT_DEFAULT_SORT_BY } from '../../ports/nfts/utils'
@@ -23,6 +24,7 @@ export const getMarketplaceFields = () => `
     contractAddress
     tokenId
     category
+    balance
     owner {
       address
     }
@@ -57,6 +59,12 @@ export const getMarketplaceFields = () => `
     }
     ens {
       subdomain
+    }
+    props {
+      name
+      description
+      owner
+      category
     }
     createdAt
     updatedAt
@@ -114,8 +122,15 @@ export type MarketplaceNFTFields = {
   ens?: {
     subdomain: string
   }
+  props?: {
+    owner: string
+    name: string
+    description: string
+    category: PropsCategory
+  }
   createdAt: string
   updatedAt: string
+  balance: string
   soldAt: string
   searchOrderPrice: string
   searchOrderCreatedAt: string
@@ -149,7 +164,7 @@ export function fromMarketplaceNFTFragment(
 ): NFTResult {
   const result: NFTResult = {
     nft: {
-      id: getId(fragment.contractAddress, fragment.tokenId),
+      id: getId(fragment.contractAddress, fragment.tokenId,fragment.owner.address,fragment.category),
       tokenId: fragment.tokenId,
       contractAddress: fragment.contractAddress,
       activeOrderId:
@@ -159,7 +174,8 @@ export function fromMarketplaceNFTFragment(
       owner: fragment.owner.address.toLowerCase(),
       name: fragment.name || capitalize(fragment.category),
       image: fragment.image || '',
-      url: `/contracts/${fragment.contractAddress}/tokens/${fragment.tokenId}`,
+      url: `/contracts/${fragment.contractAddress}/tokens/${fragment.tokenId}/${fragment.category=='props'?fragment.owner.address:''}`,
+      balance:fragment.balance,
       data: {
         parcel: fragment.parcel
           ? {
@@ -201,6 +217,14 @@ export function fromMarketplaceNFTFragment(
             }
           : undefined,
         ens: fragment.ens ? { subdomain: fragment.ens.subdomain } : undefined,
+        props: fragment.props
+          ? {
+              name: fragment.props.name,
+              category: fragment.props.category,
+              description: fragment.props.description,
+              owner: fragment.props.owner
+            }
+          : undefined,
       },
       issuedId: null,
       itemId: null,

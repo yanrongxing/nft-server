@@ -322,16 +322,16 @@ async function initComponents(): Promise<AppComponents> {
     chainId: marketplaceChainId,
   })
 
-  const collectionsSales = createSalesComponent({
-    subgraph: collectionsSubgraph,
-    network: marketplaceChainName,
-    chainId: collectionsChainId,
-  })
+  // const collectionsSales = createSalesComponent({
+  //   subgraph: collectionsSubgraph,
+  //   network: marketplaceChainName,
+  //   chainId: collectionsChainId,
+  // })
 
   const sales = createMergerComponent<Sale, SaleFilters, SaleSortBy>({
     sources: [
       createSalesSource(marketplaceSales),
-      createSalesSource(collectionsSales),
+      // createSalesSource(collectionsSales),
     ],
     defaultSortBy: SALE_DEFAULT_SORT_BY,
     directions: {

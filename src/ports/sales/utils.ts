@@ -30,6 +30,7 @@ export function fromSaleFragment(
     txHash: fragment.txHash,
     network,
     chainId,
+    quantity:fragment.quantity
   }
 
   return sale
@@ -42,6 +43,7 @@ export const getSaleFragment = (network: Network) => `
     buyer
     seller
     price
+    quantity
     timestamp
     txHash
     ${network === Network.MATIC ? 'searchItemId' : ''}

@@ -18,6 +18,8 @@ export function createSubgraphComponent(
     remainingAttempts = 3,
     requestId = requestSession.getId()
   ): Promise<T> {
+    console.log('query',query)
+    console.log('variables',variables)
     const start = Date.now()
     const log = (result: 'SUCCESS' | 'FAILURE') => {
       logger.info('Subgraph Query', {
@@ -47,7 +49,7 @@ export function createSubgraphComponent(
         data: T
         errors?: { message: string }[]
       } = await response.json()
-      
+      console.log('result',JSON.stringify(result))
       if (!result || !result.data || Object.keys(result.data).length === 0) {
         if (result && result.errors && result.errors.length) {
           throw new Error(
