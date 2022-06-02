@@ -1,4 +1,5 @@
 import { NFTFilters, NFTSortBy } from '@yanrongxing/schemas'
+import { isERC1155 } from '../../logic/address'
 import { ISubgraphComponent } from '../subgraph/types'
 import { INFTsComponent, NFTResult } from './types'
 import { getFetchOneQuery, getFetchQuery, getQueryVariables } from './utils'
@@ -49,12 +50,12 @@ export function createNFTComponent<T extends { id: string }>(options: {
     }
 
 
-    if ((options.contractAddresses![0] !== '0x610178da211fef7d417bc0e6fed39f05609ad788' ) && options.tokenId && options.contractAddresses ) {
+    if ( !isERC1155(options.contractAddresses![0]) && options.tokenId && options.contractAddresses ) {
       const nft = await fetchOne(options.contractAddresses[0], options.tokenId)
       return nft ? [nft] : []
     }
 
-    if ((options.contractAddresses![0] === '0x610178da211fef7d417bc0e6fed39f05609ad788' ) && options.tokenId && options.contractAddresses && options.owner ) {
+    if (isERC1155(options.contractAddresses![0]) && options.tokenId && options.contractAddresses && options.owner ) {
       const nft = await fetchOne(options.contractAddresses[0], options.tokenId,options.owner)
       return nft ? [nft] : []
     }
